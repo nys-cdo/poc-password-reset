@@ -1,0 +1,42 @@
+{
+  "intro": "ITS del Estado de Nueva York se compromete a garantizar que GovArc Support sea accesible para todos, incluidas las personas con discapacidades. Trabajamos continuamente para cumplir y superar las normas de accesibilidad aplicables.",
+  "commitment": {
+    "title": "Nuestro compromiso",
+    "body": "Creemos que cada residente merece un acceso equitativo a los servicios del estado. GovArc Support está diseñado y probado para ser perceptible, operable, comprensible y robusto para todos los usuarios, sin importar su capacidad o la tecnología que utilicen."
+  },
+  "features": {
+    "title": "Funciones de accesibilidad",
+    "items": [
+      { "title": "Navegación con teclado", "text": "Todos los elementos interactivos se pueden alcanzar y operar solo con el teclado, con un indicador de foco visible." },
+      { "title": "Compatibilidad con lectores de pantalla", "text": "Se utilizan estructura semántica, regiones y ARIA para que la tecnología de asistencia anuncie el contenido con precisión." },
+      { "title": "Contraste legible", "text": "Los colores del texto y de la interfaz cumplen con las proporciones de contraste de WCAG para su legibilidad." },
+      { "title": "Contenido redimensionable", "text": "Las páginas siguen siendo utilizables con un zoom del 200% y se reorganizan correctamente en pantallas pequeñas." },
+      { "title": "Movimiento reducido", "text": "Las animaciones respetan la preferencia de movimiento reducido de su sistema operativo." },
+      { "title": "Lenguaje claro", "text": "El contenido en lenguaje sencillo y la navegación coherente facilitan la realización de las tareas." }
+    ]
+  },
+  "standards": {
+    "title": "Normas que seguimos",
+    "items": [
+      "Pautas de Accesibilidad para el Contenido Web (WCAG) 2.2, Nivel AA",
+      "Sección 508 de la Ley de Rehabilitación",
+      "Política de accesibilidad del Estado de Nueva York NYS-P08-005"
+    ]
+  },
+  "testing": {
+    "title": "Cómo realizamos las pruebas",
+    "items": [
+      "Pruebas automatizadas con axe-core y Lighthouse en cada página",
+      "Revisiones manuales de navegación solo con teclado",
+      "Verificaciones puntuales con lectores de pantalla NVDA, JAWS y VoiceOver",
+      "Verificación del contraste de color según los tokens de diseño"
+    ]
+  },
+  "report": {
+    "title": "Informar un problema de accesibilidad",
+    "body": "Si encuentra una barrera de accesibilidad en GovArc Support, háganoslo saber para que podamos solucionarla.",
+    "emailLabel": "Correo electrónico",
+    "email": "accessibility@its.ny.gov",
+    "response": "Respondemos a los informes de accesibilidad en un plazo de dos días hábiles."
+  }
+}

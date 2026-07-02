@@ -1,0 +1,58 @@
+{
+  "data-privacy": {
+    "title": "Cómo proteger la privacidad de sus datos",
+    "excerpt": "Comprenda qué información personal recopila el estado y los pasos que puede seguir para mantener sus datos seguros."
+  },
+  "webex": {
+    "title": "Introducción a Webex",
+    "excerpt": "Únase a reuniones, comparta su pantalla y colabore con colegas usando Webex en cualquier dispositivo."
+  },
+  "smartphone-safety": {
+    "title": "Consejos de seguridad para teléfonos inteligentes",
+    "excerpt": "Configuraciones y hábitos prácticos que protegen su teléfono, sus cuentas y sus datos personales."
+  },
+  "microsoft-outlook": {
+    "title": "Conceptos básicos de Microsoft Outlook",
+    "excerpt": "Configure su bandeja de entrada, administre su calendario y manténgase organizado con las funciones esenciales de Outlook."
+  },
+  "phishing-awareness": {
+    "title": "Cómo reconocer ataques de phishing",
+    "excerpt": "Aprenda las señales de advertencia de los correos de phishing y cómo denunciar mensajes sospechosos de forma segura."
+  },
+  "mfa-setup": {
+    "title": "Cómo configurar la autenticación multifactor",
+    "excerpt": "Agregue una segunda capa de protección a su cuenta en solo unos minutos."
+  },
+  "password-best-practices": {
+    "title": "Prácticas recomendadas para contraseñas",
+    "excerpt": "Cree contraseñas seguras y fáciles de recordar, y descubra por qué la longitud supera a la complejidad."
+  },
+  "teams-basics": {
+    "title": "Conceptos básicos de Microsoft Teams",
+    "excerpt": "Converse, reúnase y colabore con su equipo usando lo esencial de Microsoft Teams."
+  },
+  "onedrive-sharing": {
+    "title": "Compartir archivos con OneDrive",
+    "excerpt": "Almacene, sincronice y comparta documentos de forma segura desde cualquier lugar con OneDrive."
+  },
+  "ai-responsible-use": {
+    "title": "Uso responsable de la IA",
+    "excerpt": "Orientación para usar herramientas de inteligencia artificial de forma segura y adecuada en el trabajo estatal."
+  },
+  "ai-chatbots": {
+    "title": "Cómo trabajar con chatbots de IA",
+    "excerpt": "Obtenga mejores resultados de los asistentes de IA mientras protege la información confidencial."
+  },
+  "about-its": {
+    "title": "Acerca de NYS ITS",
+    "excerpt": "Conozca la Oficina de Servicios de Tecnología de la Información y los servicios que ofrecemos."
+  },
+  "careers-at-its": {
+    "title": "Empleo en NYS ITS",
+    "excerpt": "Explore carreras de tecnología con el Estado de Nueva York y cómo postularse."
+  },
+  "browser-troubleshooting": {
+    "title": "Solución de problemas del navegador",
+    "excerpt": "Resuelva problemas comunes borrando la caché, actualizando su navegador y revisando la configuración."
+  }
+}

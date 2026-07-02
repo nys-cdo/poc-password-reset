@@ -1,0 +1,58 @@
+{
+  "data-privacy": {
+    "title": "Protecting Your Data Privacy",
+    "excerpt": "Understand what personal information the state collects and the steps you can take to keep your data secure."
+  },
+  "webex": {
+    "title": "Getting Started with Webex",
+    "excerpt": "Join meetings, share your screen, and collaborate with colleagues using Webex on any device."
+  },
+  "smartphone-safety": {
+    "title": "Smartphone Safety Tips",
+    "excerpt": "Practical settings and habits that protect your phone, your accounts, and your personal data."
+  },
+  "microsoft-outlook": {
+    "title": "Microsoft Outlook Basics",
+    "excerpt": "Set up your inbox, manage your calendar, and stay organized with Outlook's core features."
+  },
+  "phishing-awareness": {
+    "title": "Recognizing Phishing Attacks",
+    "excerpt": "Learn the warning signs of phishing emails and how to report suspicious messages safely."
+  },
+  "mfa-setup": {
+    "title": "Setting Up Multi-Factor Authentication",
+    "excerpt": "Add a second layer of protection to your account in just a few minutes."
+  },
+  "password-best-practices": {
+    "title": "Password Best Practices",
+    "excerpt": "Create strong, memorable passwords and learn why length beats complexity."
+  },
+  "teams-basics": {
+    "title": "Microsoft Teams Basics",
+    "excerpt": "Chat, meet, and collaborate with your team using the essentials of Microsoft Teams."
+  },
+  "onedrive-sharing": {
+    "title": "Sharing Files with OneDrive",
+    "excerpt": "Store, sync, and share documents securely from anywhere with OneDrive."
+  },
+  "ai-responsible-use": {
+    "title": "Responsible Use of AI",
+    "excerpt": "Guidance for using artificial intelligence tools safely and appropriately in state work."
+  },
+  "ai-chatbots": {
+    "title": "Working with AI Chatbots",
+    "excerpt": "Get better results from AI assistants while protecting sensitive information."
+  },
+  "about-its": {
+    "title": "About NYS ITS",
+    "excerpt": "Learn about the Office of Information Technology Services and the services we provide."
+  },
+  "careers-at-its": {
+    "title": "Careers at NYS ITS",
+    "excerpt": "Explore technology careers with New York State and how to apply."
+  },
+  "browser-troubleshooting": {
+    "title": "Browser Troubleshooting",
+    "excerpt": "Fix common issues by clearing your cache, updating your browser, and checking settings."
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "hero": {
+    "subtitle": "Your self-service portal for password resets and account management.",
+    "searchLink": "Or, just search the knowledge base"
+  },
+  "taskSelector": {
+    "legend": "I need to…",
+    "helper": "No login needed for the first step.",
+    "continue": "Continue",
+    "error": "Please select an option to continue."
+  },
+  "tasks": {
+    "resetPassword": {
+      "label": "Reset my password",
+      "description": "I forgot it, or I know it but want a new one.",
+      "estimate": "~2 min"
+    },
+    "recoverAccount": {
+      "label": "Recover my account",
+      "description": "I'm completely locked out and need help.",
+      "estimate": "~10 min"
+    },
+    "somethingElse": {
+      "label": "Something else",
+      "description": "Browse the knowledge base or all services.",
+      "estimate": ""
+    }
+  },
+  "quickActions": {
+    "title": "Or if you'd rather poke around",
+    "items": {
+      "search": {
+        "title": "Search articles",
+        "text": "How-tos, explanations, and step-by-step guides.",
+        "link": "Open knowledge base"
+      },
+      "ticket": {
+        "title": "Check ticket status",
+        "text": "See where your open requests stand.",
+        "link": "View tickets"
+      },
+      "recovery": {
+        "title": "Account recovery",
+        "text": "Locked out? Start the recovery flow.",
+        "link": "Start recovery"
+      }
+    }
+  },
+  "kbPreview": {
+    "title": "Knowledge Base",
+    "description": "Find answers to common questions and helpful guides",
+    "viewAll": "View all articles",
+    "readArticle": "Read article"
+  }
+}

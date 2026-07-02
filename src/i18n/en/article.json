@@ -1,0 +1,64 @@
+{
+  "meta": {
+    "by": "By {{author}}",
+    "views_one": "{{count}} view",
+    "views_other": "{{count}} views"
+  },
+  "feedback": {
+    "question": "Was this article helpful?",
+    "yes": "Yes, helpful",
+    "no": "No, not helpful",
+    "commentLabel": "Additional comments",
+    "commentPlaceholder": "Tell us how we can improve this article…",
+    "submit": "Submit feedback",
+    "success": "Thanks for your feedback! Your response helps us improve."
+  },
+  "notFound": {
+    "heading": "Article not found",
+    "body": "We couldn't find the article you're looking for. It may have been moved or removed.",
+    "back": "Back to the knowledge base"
+  },
+  "sourceLabel": "Source",
+  "genericBody": [
+    "This article is part of the New York State knowledge base. Detailed step-by-step guidance is being added.",
+    "For personalized help, contact the Enterprise Service Desk or start a guided recovery from the home page."
+  ],
+  "bodies": {
+    "data-privacy": [
+      { "type": "paragraph", "text": "New York State is committed to protecting the personal information of every resident. This article explains what data we collect, how it is used, and the steps you can take to keep your information safe." },
+      { "type": "heading", "text": "What information is collected" },
+      { "type": "paragraph", "text": "State services collect only the information needed to deliver them. That typically includes your contact details, account identifiers, and records of the requests you make." },
+      { "type": "list", "items": ["Contact details such as your name and email address", "Account identifiers used to verify your identity", "Technical data such as browser type and pages visited"] },
+      { "type": "heading", "text": "Steps you can take" },
+      { "type": "paragraph", "text": "Use a strong, unique password, enable multi-factor authentication, and be cautious about the information you share online. Review your account settings regularly." },
+      { "type": "video", "videoUrl": "https://www.youtube.com/watch?v=aircAruvnKk" },
+      { "type": "source", "text": "https://its.ny.gov/nys-data-privacy" }
+    ],
+    "webex": [
+      { "type": "paragraph", "text": "Webex is the state's video conferencing platform for meetings, webinars, and screen sharing. You can join from a browser, the desktop app, or your phone." },
+      { "type": "heading", "text": "Joining a meeting" },
+      { "type": "paragraph", "text": "Select the meeting link in your invitation. If prompted, allow access to your camera and microphone, then choose whether to join with video on or off." },
+      { "type": "list", "items": ["Test your audio and video before joining", "Mute yourself when you are not speaking", "Use the chat panel to share links and questions"] },
+      { "type": "heading", "text": "Sharing your screen" },
+      { "type": "paragraph", "text": "Select Share Content during a meeting, choose the window or screen you want to present, and select Share. Stop sharing when you are finished." },
+      { "type": "source", "text": "https://its.ny.gov/webex" }
+    ],
+    "smartphone-safety": [
+      { "type": "paragraph", "text": "Your smartphone holds a lot of personal information. A few settings and habits go a long way toward keeping it — and your accounts — secure." },
+      { "type": "heading", "text": "Lock and update your device" },
+      { "type": "list", "items": ["Set a strong passcode and enable biometric unlock", "Turn on automatic software updates", "Enable remote find-and-erase in case your phone is lost"] },
+      { "type": "heading", "text": "Be app-smart" },
+      { "type": "paragraph", "text": "Install apps only from official stores, review the permissions each app requests, and remove apps you no longer use." },
+      { "type": "source", "text": "https://its.ny.gov/smartphone-safety" }
+    ],
+    "microsoft-outlook": [
+      { "type": "paragraph", "text": "Microsoft Outlook brings your email, calendar, and contacts together in one place. This guide covers the basics to get you organized." },
+      { "type": "heading", "text": "Managing your inbox" },
+      { "type": "paragraph", "text": "Use folders and rules to sort incoming mail automatically, and flag messages that need follow-up so nothing slips through." },
+      { "type": "list", "items": ["Create folders for projects and topics", "Set up rules to file mail automatically", "Use search folders to find messages fast"] },
+      { "type": "heading", "text": "Using the calendar" },
+      { "type": "paragraph", "text": "Schedule meetings, set reminders, and share your availability. Color-categorize events to see your day at a glance." },
+      { "type": "source", "text": "https://its.ny.gov/outlook" }
+    ]
+  }
+}

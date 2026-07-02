@@ -1,0 +1,33 @@
+{
+  "subtitle": "Busque instrucciones, guías y respuestas en todos los temas de soporte del Estado de Nueva York.",
+  "search": {
+    "label": "Buscar en la base de conocimientos",
+    "placeholder": "Buscar artículos…",
+    "button": "Buscar"
+  },
+  "categoriesHeading": "Categorías",
+  "categoriesLabel": "Filtrar por categoría",
+  "view": {
+    "label": "Vista",
+    "list": "Lista",
+    "grid": "Cuadrícula"
+  },
+  "results": {
+    "count_one": "{{count}} artículo",
+    "count_other": "{{count}} artículos"
+  },
+  "empty": {
+    "heading": "No se encontraron artículos",
+    "body": "Pruebe con otro término de búsqueda o categoría."
+  },
+  "readTime": "{{count}} min de lectura",
+  "readArticle": "Leer artículo",
+  "categories": {
+    "all": "Todos los artículos",
+    "its-careers": "Sobre ITS y empleo",
+    "ai": "Inteligencia artificial",
+    "cybersecurity": "Avisos de ciberseguridad",
+    "software": "Software y aplicaciones",
+    "uncategorized": "Sin categoría"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "skipToMain": "Saltar al contenido principal",
+  "appName": "NYS GovArc Support",
+  "nav": {
+    "home": "Inicio",
+    "knowledgeBase": "Base de conocimientos",
+    "help": "Ayuda",
+    "faq": "Preguntas frecuentes",
+    "accessibility": "Accesibilidad",
+    "contactSupport": "Contactar con soporte"
+  },
+  "userActions": {
+    "signIn": "Iniciar sesión",
+    "createAccount": "Crear cuenta"
+  },
+  "footer": {
+    "agencyName": "Oficina de Servicios de Tecnología de la Información del Estado de Nueva York",
+    "aboutGovArc": "Acerca de GovArc Support",
+    "privacy": "Política de privacidad",
+    "accessibility": "Accesibilidad",
+    "followUs": "Síganos",
+    "facebook": "Facebook",
+    "x": "X"
+  },
+  "pageTitles": {
+    "home": "Bienvenido a GovArc Support",
+    "faq": "Preguntas frecuentes",
+    "knowledge": "Base de conocimientos",
+    "article": "Artículo",
+    "accessibility": "Declaración de accesibilidad",
+    "passwordReset": "Recupere su cuenta",
+    "privacy": "Política de privacidad",
+    "tickets": "Mi soporte",
+    "notFound": "Página no encontrada"
+  },
+  "notFound": {
+    "body": "La página que busca no existe o es posible que se haya movido.",
+    "back": "Ir a la página de inicio"
+  }
+}

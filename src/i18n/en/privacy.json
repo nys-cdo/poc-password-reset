@@ -1,0 +1,76 @@
+{
+  "effectiveBadge": "Effective: January 1, 2025",
+  "intro": "This Privacy Policy explains how New York State ITS collects, uses, and protects the information you provide when using GovArc Support. We are committed to safeguarding your privacy and handling your data responsibly.",
+  "sections": [
+    {
+      "id": "collect",
+      "title": "Information We Collect",
+      "paragraphs": [
+        "We collect only the information needed to help you resolve account and support issues."
+      ],
+      "list": [
+        "Contact details such as your name and email address",
+        "Account identifiers used to verify your identity",
+        "Support requests and the messages you send us",
+        "Technical data such as browser type and pages visited"
+      ]
+    },
+    {
+      "id": "use",
+      "title": "How We Use Your Information",
+      "paragraphs": [
+        "Your information is used to provide and improve GovArc Support services."
+      ],
+      "list": [
+        "Verify your identity and process account recovery",
+        "Respond to your support requests",
+        "Detect and prevent fraud or abuse",
+        "Improve the accessibility and reliability of our services"
+      ]
+    },
+    {
+      "id": "security",
+      "title": "Data Security",
+      "paragraphs": [
+        "We apply administrative, technical, and physical safeguards designed to protect your information from unauthorized access, disclosure, or loss."
+      ]
+    },
+    {
+      "id": "sharing",
+      "title": "Information Sharing",
+      "paragraphs": [
+        "We do not sell your personal information. We share data only with authorized state entities and service providers as needed to deliver services, or when required by law."
+      ]
+    },
+    {
+      "id": "retention",
+      "title": "Data Retention",
+      "paragraphs": [
+        "We retain your information only for as long as necessary to fulfill the purposes described in this policy and to meet legal and regulatory requirements."
+      ]
+    },
+    {
+      "id": "rights",
+      "title": "Your Rights",
+      "paragraphs": [
+        "Depending on your circumstances, you may have the right to:"
+      ],
+      "list": [
+        "Access the personal information we hold about you",
+        "Request corrections to inaccurate information",
+        "Request deletion where permitted by law",
+        "Ask questions about how your data is handled"
+      ]
+    }
+  ],
+  "securityCallout": {
+    "title": "Security Measures",
+    "body": "All data is encrypted in transit and at rest, access is limited to authorized personnel, and our systems are monitored and regularly assessed for vulnerabilities."
+  },
+  "contact": {
+    "title": "Questions about this policy?",
+    "body": "Contact the NYS ITS Privacy Office and we'll be glad to help.",
+    "emailLabel": "Email",
+    "email": "privacy@its.ny.gov"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "subtitle": "Search how-tos, guides, and answers across all New York State support topics.",
+  "search": {
+    "label": "Search the knowledge base",
+    "placeholder": "Search articles…",
+    "button": "Search"
+  },
+  "categoriesHeading": "Categories",
+  "categoriesLabel": "Filter by category",
+  "view": {
+    "label": "View",
+    "list": "List",
+    "grid": "Grid"
+  },
+  "results": {
+    "count_one": "{{count}} article",
+    "count_other": "{{count}} articles"
+  },
+  "empty": {
+    "heading": "No articles found",
+    "body": "Try a different search term or category."
+  },
+  "readTime": "{{count}} min read",
+  "readArticle": "Read article",
+  "categories": {
+    "all": "All Articles",
+    "its-careers": "About ITS & Careers",
+    "ai": "Artificial Intelligence",
+    "cybersecurity": "Cybersecurity Advisories",
+    "software": "Software & Applications",
+    "uncategorized": "Uncategorized"
+  }
+}

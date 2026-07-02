@@ -1,0 +1,45 @@
+{
+  "subtitle": "Answers to common questions about GovArc Support accounts, security, and access.",
+  "items": {
+    "whatIsGovArc": {
+      "q": "What is GovArc Support?",
+      "a": "GovArc Support is the public help portal for New York State residents. It provides self-service account recovery, a searchable knowledge base, and guidance for common technology issues — no sign-in required to get started."
+    },
+    "resetPassword": {
+      "q": "How do I reset my password?",
+      "a": "Select \"Reset my password\" on the home page, enter the email associated with your account, and answer your security questions. You'll then be able to set a new password. The whole process takes about two minutes."
+    },
+    "enrollMfa": {
+      "q": "How do I enroll in multi-factor authentication (MFA)?",
+      "a": "Once signed in, open your account settings and choose \"Security.\" Follow the prompts to add an authenticator app or a phone number. MFA adds a second step at sign-in to keep your account secure."
+    },
+    "accountLocked": {
+      "q": "My account is locked. What should I do?",
+      "a": "Accounts lock automatically after several failed sign-in attempts. Wait 15 minutes and try again, or use \"Recover my account\" to verify your identity and unlock access immediately."
+    },
+    "supportedBrowsers": {
+      "q": "Which browsers are supported?",
+      "a": "GovArc Support works on the current and previous major versions of Chrome, Edge, Firefox, and Safari. For the best experience, keep your browser up to date."
+    },
+    "isAccessible": {
+      "q": "Is this site accessible?",
+      "a": "Yes. GovArc Support conforms to WCAG 2.2 AA and Section 508. If you encounter a barrier, see our Accessibility Statement to report it and we'll respond within two business days."
+    },
+    "dataProtection": {
+      "q": "How is my data protected?",
+      "a": "Your information is encrypted in transit and at rest, and access is limited to authorized staff. Read our Privacy Policy to learn what we collect and how it is used."
+    },
+    "contactSupport": {
+      "q": "How do I contact support?",
+      "a": "Email the Enterprise Service Desk at fixit@its.ny.gov or call 1-844-891-1786. The Service Desk is available 24 hours a day, 7 days a week."
+    }
+  },
+  "contact": {
+    "title": "Still have questions?",
+    "body": "Our Enterprise Service Desk is here to help around the clock.",
+    "emailLabel": "Email",
+    "email": "fixit@its.ny.gov",
+    "hoursLabel": "Hours",
+    "hours": "24 hours a day, 7 days a week"
+  }
+}

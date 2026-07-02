@@ -1,0 +1,22 @@
+/*
+ * App-level styles. Themed values reference NYSDS design tokens (--nys-*) only —
+ * no raw hex, px, or rem (enforced by stylelint). See PRD §9.
+ */
+
+/*
+ * Project override of the NYSDS grid container max width. Loaded after
+ * nysds-full.min.css so this wins. `rem` is intentional here (an explicit
+ * width override), so the stylelint unit rule is disabled for this line.
+ */
+.nys-grid-container {
+  /* stylelint-disable-next-line unit-disallowed-list */
+  max-width: 83rem;
+}
+
+.site-header__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--nys-space-100);
+  align-items: center;
+  justify-content: flex-end;
+}

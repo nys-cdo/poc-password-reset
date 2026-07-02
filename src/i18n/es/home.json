@@ -1,0 +1,55 @@
+{
+  "hero": {
+    "subtitle": "Su portal de autoservicio para restablecer contraseñas y administrar su cuenta.",
+    "searchLink": "O simplemente busque en la base de conocimientos"
+  },
+  "taskSelector": {
+    "legend": "Necesito…",
+    "helper": "No se necesita iniciar sesión para el primer paso.",
+    "continue": "Continuar",
+    "error": "Seleccione una opción para continuar."
+  },
+  "tasks": {
+    "resetPassword": {
+      "label": "Restablecer mi contraseña",
+      "description": "La olvidé, o la sé pero quiero una nueva.",
+      "estimate": "~2 min"
+    },
+    "recoverAccount": {
+      "label": "Recuperar mi cuenta",
+      "description": "Estoy completamente bloqueado y necesito ayuda.",
+      "estimate": "~10 min"
+    },
+    "somethingElse": {
+      "label": "Otra cosa",
+      "description": "Explorar la base de conocimientos o todos los servicios.",
+      "estimate": ""
+    }
+  },
+  "quickActions": {
+    "title": "O si prefiere explorar",
+    "items": {
+      "search": {
+        "title": "Buscar artículos",
+        "text": "Instrucciones, explicaciones y guías paso a paso.",
+        "link": "Abrir base de conocimientos"
+      },
+      "ticket": {
+        "title": "Ver estado del ticket",
+        "text": "Vea el estado de sus solicitudes abiertas.",
+        "link": "Ver tickets"
+      },
+      "recovery": {
+        "title": "Recuperación de cuenta",
+        "text": "¿Bloqueado? Inicie el proceso de recuperación.",
+        "link": "Iniciar recuperación"
+      }
+    }
+  },
+  "kbPreview": {
+    "title": "Base de conocimientos",
+    "description": "Encuentre respuestas a preguntas comunes y guías útiles",
+    "viewAll": "Ver todos los artículos",
+    "readArticle": "Leer artículo"
+  }
+}

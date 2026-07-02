@@ -1,0 +1,42 @@
+{
+  "intro": "New York State ITS is committed to ensuring that GovArc Support is accessible to everyone, including people with disabilities. We continually work to meet and exceed applicable accessibility standards.",
+  "commitment": {
+    "title": "Our Commitment",
+    "body": "We believe every resident deserves equal access to state services. GovArc Support is designed and tested to be perceivable, operable, understandable, and robust for all users, regardless of ability or the technology they use."
+  },
+  "features": {
+    "title": "Accessibility Features",
+    "items": [
+      { "title": "Keyboard navigation", "text": "Every interactive element is reachable and operable using only a keyboard, with a visible focus indicator." },
+      { "title": "Screen reader support", "text": "Semantic structure, landmarks, and ARIA are used so assistive technology can announce content accurately." },
+      { "title": "Readable contrast", "text": "Text and interface colors meet WCAG contrast ratios for legibility." },
+      { "title": "Resizable content", "text": "Pages remain usable at 200% zoom and reflow cleanly on small screens." },
+      { "title": "Reduced motion", "text": "Animations respect your operating-system preference for reduced motion." },
+      { "title": "Clear language", "text": "Plain-language content and consistent navigation make tasks easy to complete." }
+    ]
+  },
+  "standards": {
+    "title": "Standards We Follow",
+    "items": [
+      "Web Content Accessibility Guidelines (WCAG) 2.2, Level AA",
+      "Section 508 of the Rehabilitation Act",
+      "New York State accessibility policy NYS-P08-005"
+    ]
+  },
+  "testing": {
+    "title": "How We Test",
+    "items": [
+      "Automated testing with axe-core and Lighthouse on every page",
+      "Manual keyboard-only navigation reviews",
+      "Screen reader spot-checks with NVDA, JAWS, and VoiceOver",
+      "Color-contrast verification against design tokens"
+    ]
+  },
+  "report": {
+    "title": "Report an Accessibility Issue",
+    "body": "If you encounter an accessibility barrier on GovArc Support, please let us know so we can fix it.",
+    "emailLabel": "Email",
+    "email": "accessibility@its.ny.gov",
+    "response": "We respond to accessibility reports within two business days."
+  }
+}

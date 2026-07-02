@@ -1,0 +1,10 @@
+{
+  "auth": {
+    "heading": "Autenticación requerida",
+    "body": "Debe iniciar sesión para acceder a esta página. Inicie sesión para continuar."
+  },
+  "signIn": {
+    "heading": "Inicie sesión para continuar",
+    "text": "Acceda a sus tickets de soporte y consulte el estado de sus solicitudes."
+  }
+}

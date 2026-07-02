@@ -1,0 +1,15 @@
+{
+  "extends": ["stylelint-config-standard"],
+  "rules": {
+    "color-no-hex": [true, { "message": "Use a NYSDS token (--nys-color-*) instead of a raw hex value." }],
+    "unit-disallowed-list": [
+      ["px", "rem"],
+      { "message": "Use a NYSDS spacing/size token (--nys-space-*, --nys-*) instead of a raw px/rem value." }
+    ],
+    "custom-property-pattern": null,
+    "selector-class-pattern": [
+      "^[a-z][a-z0-9-]*(__[a-z0-9-]+)?(--[a-z0-9-]+)?$",
+      { "message": "Expected class selector to be kebab-case (BEM __element / --modifier allowed)." }
+    ]
+  }
+}

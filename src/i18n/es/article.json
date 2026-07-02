@@ -1,0 +1,64 @@
+{
+  "meta": {
+    "by": "Por {{author}}",
+    "views_one": "{{count}} vista",
+    "views_other": "{{count}} vistas"
+  },
+  "feedback": {
+    "question": "¿Le resultó útil este artículo?",
+    "yes": "Sí, útil",
+    "no": "No, no fue útil",
+    "commentLabel": "Comentarios adicionales",
+    "commentPlaceholder": "Díganos cómo podemos mejorar este artículo…",
+    "submit": "Enviar comentarios",
+    "success": "¡Gracias por sus comentarios! Su respuesta nos ayuda a mejorar."
+  },
+  "notFound": {
+    "heading": "Artículo no encontrado",
+    "body": "No pudimos encontrar el artículo que busca. Es posible que se haya movido o eliminado.",
+    "back": "Volver a la base de conocimientos"
+  },
+  "sourceLabel": "Fuente",
+  "genericBody": [
+    "Este artículo forma parte de la base de conocimientos del Estado de Nueva York. Se está agregando orientación detallada paso a paso.",
+    "Para obtener ayuda personalizada, comuníquese con el Enterprise Service Desk o inicie una recuperación guiada desde la página de inicio."
+  ],
+  "bodies": {
+    "data-privacy": [
+      { "type": "paragraph", "text": "El Estado de Nueva York se compromete a proteger la información personal de cada residente. Este artículo explica qué datos recopilamos, cómo se usan y los pasos que puede seguir para mantener su información segura." },
+      { "type": "heading", "text": "Qué información se recopila" },
+      { "type": "paragraph", "text": "Los servicios estatales recopilan solo la información necesaria para prestarlos. Por lo general, esto incluye sus datos de contacto, identificadores de cuenta y registros de las solicitudes que realiza." },
+      { "type": "list", "items": ["Datos de contacto como su nombre y dirección de correo electrónico", "Identificadores de cuenta utilizados para verificar su identidad", "Datos técnicos como el tipo de navegador y las páginas visitadas"] },
+      { "type": "heading", "text": "Pasos que puede seguir" },
+      { "type": "paragraph", "text": "Use una contraseña segura y única, active la autenticación multifactor y tenga cuidado con la información que comparte en línea. Revise la configuración de su cuenta con regularidad." },
+      { "type": "video", "videoUrl": "https://www.youtube.com/watch?v=aircAruvnKk" },
+      { "type": "source", "text": "https://its.ny.gov/nys-data-privacy" }
+    ],
+    "webex": [
+      { "type": "paragraph", "text": "Webex es la plataforma de videoconferencias del estado para reuniones, seminarios web y uso compartido de pantalla. Puede unirse desde un navegador, la aplicación de escritorio o su teléfono." },
+      { "type": "heading", "text": "Unirse a una reunión" },
+      { "type": "paragraph", "text": "Seleccione el enlace de la reunión en su invitación. Si se le solicita, permita el acceso a su cámara y micrófono y luego elija si desea unirse con el video activado o desactivado." },
+      { "type": "list", "items": ["Pruebe su audio y video antes de unirse", "Silénciese cuando no esté hablando", "Use el panel de chat para compartir enlaces y preguntas"] },
+      { "type": "heading", "text": "Compartir su pantalla" },
+      { "type": "paragraph", "text": "Seleccione Compartir contenido durante una reunión, elija la ventana o pantalla que desea presentar y seleccione Compartir. Deje de compartir cuando termine." },
+      { "type": "source", "text": "https://its.ny.gov/webex" }
+    ],
+    "smartphone-safety": [
+      { "type": "paragraph", "text": "Su teléfono inteligente contiene mucha información personal. Unas pocas configuraciones y hábitos ayudan mucho a mantenerlo seguro, a él y a sus cuentas." },
+      { "type": "heading", "text": "Bloquee y actualice su dispositivo" },
+      { "type": "list", "items": ["Establezca un código de acceso seguro y active el desbloqueo biométrico", "Active las actualizaciones automáticas de software", "Habilite la función de buscar y borrar de forma remota por si pierde el teléfono"] },
+      { "type": "heading", "text": "Sea inteligente con las aplicaciones" },
+      { "type": "paragraph", "text": "Instale aplicaciones solo desde tiendas oficiales, revise los permisos que solicita cada una y elimine las que ya no use." },
+      { "type": "source", "text": "https://its.ny.gov/smartphone-safety" }
+    ],
+    "microsoft-outlook": [
+      { "type": "paragraph", "text": "Microsoft Outlook reúne su correo electrónico, calendario y contactos en un solo lugar. Esta guía cubre lo básico para que se organice." },
+      { "type": "heading", "text": "Administrar su bandeja de entrada" },
+      { "type": "paragraph", "text": "Use carpetas y reglas para clasificar el correo entrante automáticamente y marque los mensajes que requieren seguimiento para que nada se le escape." },
+      { "type": "list", "items": ["Cree carpetas para proyectos y temas", "Configure reglas para archivar el correo automáticamente", "Use carpetas de búsqueda para encontrar mensajes rápidamente"] },
+      { "type": "heading", "text": "Usar el calendario" },
+      { "type": "paragraph", "text": "Programe reuniones, establezca recordatorios y comparta su disponibilidad. Clasifique los eventos por color para ver su día de un vistazo." },
+      { "type": "source", "text": "https://its.ny.gov/outlook" }
+    ]
+  }
+}

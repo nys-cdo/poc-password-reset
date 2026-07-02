@@ -1,0 +1,10 @@
+{
+  "auth": {
+    "heading": "Authentication Required",
+    "body": "You must be signed in to access this page. Please sign in to continue."
+  },
+  "signIn": {
+    "heading": "Sign in to continue",
+    "text": "Access your support tickets and track the status of your requests."
+  }
+}

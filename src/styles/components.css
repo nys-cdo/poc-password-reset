@@ -1,0 +1,705 @@
+/*
+ * Shared component styles for the content pages. Layout uses the NYSDS grid +
+ * utility classes (nys-grid-*, nys-margin-*); this file only adds themed styling
+ * that tokens/utilities don't cover. Themed values reference NYSDS tokens
+ * (--nys-*) only — no raw hex/px/rem (enforced by stylelint). Logical properties
+ * keep everything RTL-safe (PRD §11).
+ */
+
+/* Page scaffolding ------------------------------------------------------- */
+
+.content-page {
+  padding-block: var(--nys-space-700);
+}
+
+/* The page title is the first thing in a padded layout, so drop the global
+   h1 top margin (--nys-space-600) — the layout padding already spaces it. */
+.page-header__title {
+  margin-block-start: 0;
+}
+
+.content-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nys-space-700);
+}
+
+.section-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nys-space-300);
+}
+
+.section-heading {
+  margin: 0 0 var(--nys-space-400);
+  font-family: var(--nys-font-family-heading);
+  font-size: var(--nys-font-size-h2);
+  line-height: var(--nys-font-lineheight-h2);
+  font-weight: var(--nys-font-weight-bold);
+  color: var(--nys-color-text);
+}
+
+/* Inside contexts that manage their own spacing (flex gap / header row), let
+   that spacing win instead of the heading's default bottom margin. */
+.section-stack .section-heading,
+.section-header .section-heading {
+  margin-block-end: 0;
+}
+
+.section-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--nys-space-200);
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.section-header__desc {
+  margin: var(--nys-space-100) 0 0;
+  font-family: var(--nys-font-family-body);
+  font-size: var(--nys-font-size-body-md);
+  line-height: var(--nys-font-lineheight-body-md);
+  color: var(--nys-color-text-weak);
+}
+
+.prose {
+  max-inline-size: 70ch;
+}
+
+.prose p {
+  margin-block: 0 var(--nys-space-300);
+  font-family: var(--nys-font-family-body);
+  font-size: var(--nys-font-size-body-md);
+  line-height: var(--nys-font-lineheight-body-md);
+  color: var(--nys-color-text);
+}
+
+.prose ul {
+  margin-block: 0 var(--nys-space-300);
+  padding-inline-start: var(--nys-space-500);
+  list-style: disc;
+}
+
+.prose li {
+  margin-block-end: var(--nys-space-100);
+  font-family: var(--nys-font-family-body);
+  font-size: var(--nys-font-size-body-md);
+  line-height: var(--nys-font-lineheight-body-md);
+  color: var(--nys-color-text);
+}
+
+.prose h2 {
+  margin-block: var(--nys-space-200) var(--nys-space-100);
+  font-family: var(--nys-font-family-heading);
+  font-size: var(--nys-font-size-h2);
+  line-height: var(--nys-font-lineheight-h2);
+  color: var(--nys-color-text);
+}
+
+/* Home hero (two-column: text + task selector) --------------------------- */
+
+.home-hero {
+  position: relative;
+  isolation: isolate;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.home-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  /* Flat state-blue tint over the photo (matches the reference: primary at 90%
+     mixed in oklab), rather than a dark gradient. */
+  background-color: color-mix(in oklab, var(--nys-color-theme) 90%, transparent);
+}
+
+.home-hero__row {
+  align-items: center;
+  padding-block: var(--nys-space-1200);
+}
+
+/* The grid-gap utility (`.nys-grid-row.nys-grid-gap-500`, 2-class specificity)
+   sets a negative margin on all sides for the column gutter. Zero the block
+   axis — otherwise the negative top margin collapses up out of this
+   background-less section and overlaps the header above. Selector matches the
+   utility's specificity so this wins by source order. */
+.home-hero.home-hero .home-hero__row {
+  margin-block: 0;
+}
+
+.home-hero__title {
+  margin: 0;
+  font-family: var(--nys-font-family-display);
+  font-size: var(--nys-font-size-display-md);
+  line-height: var(--nys-font-lineheight-display-md);
+  font-weight: var(--nys-font-weight-bold);
+  color: var(--nys-color-text-reverse);
+}
+
+.home-hero__subtitle {
+  margin-block: var(--nys-space-300) 0;
+  max-inline-size: 48ch;
+  font-family: var(--nys-font-family-body);
+  font-size: var(--nys-font-size-body-lg);
+  line-height: var(--nys-font-lineheight-body-lg);
+  color: var(--nys-color-text-reverse);
+}
+
+.home-hero__search {
+  display: inline-flex;
+  gap: var(--nys-space-100);
+  align-items: center;
+  margin-block-start: var(--nys-space-400);
+  font-family: var(--nys-font-family-ui);
+  font-size: var(--nys-font-size-ui-md);
+  font-weight: var(--nys-font-weight-semibold);
+
+  /* text-reverse has no paired hover token, so hover is expressed as an
+     underline rather than a color shift (item 4). */
+  color: var(--nys-color-text-reverse);
+  text-decoration: none;
+}
+
+.home-hero__search:hover,
+.home-hero__search:focus-visible {
+  color: var(--nys-color-text-reverse);
+  text-decoration: underline;
+}
+
+/* Task selector ---------------------------------------------------------- */
+
+.task-selector {
+  display: block;
+}
+
+/* A little more start/end breathing room than the default card body (item 6).
+   `body` is exposed as a ::part on nys-card. */
+.task-selector::part(body) {
+  padding-inline: var(--nys-space-500);
+}
+
+.task-selector__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nys-space-400);
+}
+
+.task-selector__footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--nys-space-300);
+  align-items: center;
+  justify-content: space-between;
+  padding-block-start: var(--nys-space-400);
+  border-block-start: solid var(--nys-space-1px) var(--nys-color-base-weak);
+}
+
+.task-selector__helper {
+  font-family: var(--nys-font-family-body);
+  font-size: var(--nys-font-size-body-sm);
+  color: var(--nys-color-text-weak);
+}
+
+/* Quick-action cards ----------------------------------------------------- */
+
+.icon-action__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: var(--nys-space-800);
+  block-size: var(--nys-space-800);
+  border-radius: var(--nys-radius-round);
+  background: var(--nys-color-theme);
+  color: var(--nys-color-ink-reverse);
+}
+
+.icon-action__badge--accent {
+  background: var(--nys-color-accent);
+  color: var(--nys-color-ink);
+}
+
+.article-card__image {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+/* Callout ---------------------------------------------------------------- */
+
+.callout {
+  border: solid var(--nys-space-1px) var(--nys-color-base);
+  border-inline-start: solid var(--nys-space-50) var(--nys-color-theme);
+  border-radius: var(--nys-radius-md);
+  background: var(--nys-color-surface-raised);
+  padding: var(--nys-space-400);
+}
+
+.callout__title {
+  margin: 0 0 var(--nys-space-200);
+  font-family: var(--nys-font-family-heading);
+  font-size: var(--nys-font-size-h3);
+  line-height: var(--nys-font-lineheight-h3);
+  color: var(--nys-color-text);
+}
+
+.callout__body {
+  font-family: var(--nys-font-family-body);
+  font-size: var(--nys-font-size-body-md);
+  line-height: var(--nys-font-lineheight-body-md);
+  color: var(--nys-color-text);
+}
+
+.callout__body p {
+  margin: 0;
+}
+
+/* Icon feature list ------------------------------------------------------ */
+
+.icon-feature-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.icon-feature {
+  display: flex;
+  gap: var(--nys-space-200);
+  align-items: flex-start;
+}
+
+.icon-feature__icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+  color: var(--nys-color-theme);
+}
+
+.icon-feature__title {
+  margin: 0 0 var(--nys-space-50);
+  font-family: var(--nys-font-family-heading);
+  font-size: var(--nys-font-size-h4);
+  line-height: var(--nys-font-lineheight-h4);
+  color: var(--nys-color-text);
+}
+
+.icon-feature__desc {
+  margin: 0;
+  font-family: var(--nys-font-family-body);
+  font-size: var(--nys-font-size-body-sm);
+  line-height: var(--nys-font-lineheight-body-sm);
+  color: var(--nys-color-text-weak);
+}
+
+/* Knowledge base listing ------------------------------------------------- */
+
+.kb-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--nys-space-300);
+  align-items: center;
+  justify-content: space-between;
+}
+
+.kb-toolbar__count {
+  margin: 0;
+  font-family: var(--nys-font-family-body);
+  font-size: var(--nys-font-size-body-sm);
+  color: var(--nys-color-text-weak);
+}
+
+.view-toggle {
+  display: inline-flex;
+  gap: var(--nys-space-100);
+}
+
+.category-sidebar__heading {
+  margin: 0 0 var(--nys-space-200);
+  font-family: var(--nys-font-family-ui);
+  font-size: var(--nys-font-size-ui-sm);
+  font-weight: var(--nys-font-weight-semibold);
+  letter-spacing: var(--nys-font-letterspacing-ui-sm);
+  text-transform: uppercase;
+  color: var(--nys-color-text-weak);
+}
+
+.category-sidebar__list {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  /* Subtle top rule; each item carries its own bottom rule (matches reference). */
+  border-block-start: solid var(--nys-space-1px) var(--nys-color-neutral-100);
+}
+
+.category-sidebar__item {
+  display: flex;
+  gap: var(--nys-space-100);
+  align-items: center;
+  inline-size: 100%;
+  padding: var(--nys-space-200) var(--nys-space-300);
+  border: none;
+  border-block-end: solid var(--nys-space-1px) var(--nys-color-neutral-100);
+
+  /* Transparent accent reserved on every item; colored when active (no shift). */
+  border-inline-start: solid var(--nys-space-50) transparent;
+  background: transparent;
+  font-family: var(--nys-font-family-ui);
+  font-size: var(--nys-font-size-ui-md);
+  color: var(--nys-color-text);
+  text-align: start;
+  cursor: pointer;
+}
+
+.category-sidebar__count {
+  color: var(--nys-color-text-weak);
+}
+
+.category-sidebar__item:hover {
+  background: var(--nys-color-theme-faint);
+}
+
+.category-sidebar__item--active {
+  border-inline-start-color: var(--nys-color-theme);
+  font-weight: var(--nys-font-weight-semibold);
+  color: var(--nys-color-theme-strong);
+}
+
+.category-sidebar__item--active .category-sidebar__count {
+  color: inherit;
+}
+
+.article-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.article-row {
+  padding-block: var(--nys-space-400);
+
+  /* Match the nys-divider `subtle` color rather than the heavier base line. */
+  border-block-end: solid var(--nys-space-1px) var(--nys-color-neutral-100);
+}
+
+.article-row:first-child {
+  padding-block-start: 0;
+}
+
+.article-row__title {
+  margin: 0 0 var(--nys-space-100);
+  font-family: var(--nys-font-family-heading);
+  font-size: var(--nys-font-size-h4);
+  line-height: var(--nys-font-lineheight-h4);
+  color: var(--nys-color-text);
+}
+
+.article-row__excerpt {
+  margin: 0 0 var(--nys-space-200);
+  font-family: var(--nys-font-family-body);
+  font-size: var(--nys-font-size-body-md);
+  line-height: var(--nys-font-lineheight-body-md);
+  color: var(--nys-color-text-weak);
+}
+
+.article-row__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--nys-space-300);
+  align-items: center;
+}
+
+.article-row__read {
+  display: inline-flex;
+  gap: var(--nys-space-100);
+  align-items: center;
+  font-size: var(--nys-font-size-body-sm);
+  color: var(--nys-color-text-weak);
+}
+
+/* Article detail --------------------------------------------------------- */
+
+.article-hero {
+  padding-block: var(--nys-space-800);
+  background: var(--nys-color-theme);
+  color: var(--nys-color-text-reverse);
+
+  /* Recolor DS components (breadcrumb) that read these tokens so they are
+     legible on the dark band. Custom properties inherit into shadow DOM. */
+  --nys-color-link: var(--nys-color-link-reverse);
+  --nys-color-link-strong: var(--nys-color-link-reverse-strong);
+  --nys-color-text: var(--nys-color-text-reverse);
+  --nys-color-text-weak: var(--nys-color-text-reverse-weak);
+  --nys-color-ink: var(--nys-color-ink-reverse);
+}
+
+.article-hero__title {
+  margin: var(--nys-space-400) 0 0;
+  font-family: var(--nys-font-family-heading);
+  font-size: var(--nys-font-size-h1);
+  line-height: var(--nys-font-lineheight-h1);
+  font-weight: var(--nys-font-weight-bold);
+  color: var(--nys-color-text-reverse);
+}
+
+.article-hero__desc {
+  margin: var(--nys-space-200) 0 0;
+  max-inline-size: 70ch;
+  font-family: var(--nys-font-family-body);
+  font-size: var(--nys-font-size-body-lg);
+  line-height: var(--nys-font-lineheight-body-lg);
+  color: var(--nys-color-text-reverse);
+}
+
+.article-hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--nys-space-400);
+  margin-block-start: var(--nys-space-400);
+}
+
+.article-hero__metaitem {
+  display: inline-flex;
+  gap: var(--nys-space-100);
+  align-items: center;
+  font-size: var(--nys-font-size-body-sm);
+  color: var(--nys-color-text-reverse);
+}
+
+.article-layout {
+  max-inline-size: 75ch;
+}
+
+.article-body__video {
+  margin-block: var(--nys-space-400);
+}
+
+.article-body__image {
+  max-inline-size: 100%;
+  block-size: auto;
+  border-radius: var(--nys-radius-md);
+}
+
+.article-body__source {
+  margin-block-start: var(--nys-space-400);
+  font-size: var(--nys-font-size-body-sm);
+  color: var(--nys-color-text-weak);
+}
+
+.article-feedback {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nys-space-300);
+  align-items: flex-start;
+  margin-block-start: var(--nys-space-700);
+  padding-block-start: var(--nys-space-500);
+  border-block-start: solid var(--nys-space-1px) var(--nys-color-base);
+}
+
+.article-feedback__question {
+  margin: 0;
+  font-family: var(--nys-font-family-heading);
+  font-size: var(--nys-font-size-h4);
+  color: var(--nys-color-text);
+}
+
+.article-feedback__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--nys-space-200);
+}
+
+/* Tickets — sign-in panel ------------------------------------------------ */
+
+.signin-panel {
+  max-inline-size: 48ch;
+  padding: var(--nys-space-500);
+  border: solid var(--nys-space-1px) var(--nys-color-base-weak);
+  border-radius: var(--nys-radius-md);
+  background: var(--nys-color-surface);
+}
+
+.signin-panel__heading {
+  margin: 0 0 var(--nys-space-200);
+  font-family: var(--nys-font-family-heading);
+  font-size: var(--nys-font-size-h3);
+  line-height: var(--nys-font-lineheight-h3);
+  color: var(--nys-color-text);
+}
+
+.signin-panel__text {
+  margin: 0 0 var(--nys-space-400);
+  font-family: var(--nys-font-family-body);
+  font-size: var(--nys-font-size-body-md);
+  line-height: var(--nys-font-lineheight-body-md);
+  color: var(--nys-color-text-weak);
+}
+
+/* Password recovery (stepper flow) --------------------------------------- */
+
+/* Centered page header (title + intro) for the recovery flow. */
+.recovery-header {
+  margin-inline: auto;
+  margin-block-end: var(--nys-space-800);
+  max-inline-size: 70ch;
+  text-align: center;
+}
+
+.recovery-header .page-header__lead {
+  margin-block-start: var(--nys-space-200);
+}
+
+/* Keep the Quick Actions rail top-aligned next to the (usually taller) form. */
+.recovery-body {
+  align-items: start;
+}
+
+.step-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nys-space-400);
+}
+
+.step-form__heading {
+  margin: 0;
+  font-family: var(--nys-font-family-heading);
+  font-size: var(--nys-font-size-h2);
+  line-height: var(--nys-font-lineheight-h2);
+  font-weight: var(--nys-font-weight-bold);
+  color: var(--nys-color-text);
+}
+
+.step-form__desc {
+  margin: 0;
+  font-family: var(--nys-font-family-body);
+  font-size: var(--nys-font-size-body-md);
+  line-height: var(--nys-font-lineheight-body-md);
+  color: var(--nys-color-text-weak);
+}
+
+.step-fields {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nys-space-400);
+}
+
+.step-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--nys-space-200);
+  margin-block-start: var(--nys-space-200);
+}
+
+.password-rules {
+  padding: var(--nys-space-300);
+  border-radius: var(--nys-radius-md);
+  background: var(--nys-color-surface-raised);
+}
+
+.password-rules__title {
+  margin: 0 0 var(--nys-space-200);
+  font-family: var(--nys-font-family-body);
+  font-size: var(--nys-font-size-body-sm);
+  font-weight: var(--nys-font-weight-semibold);
+  color: var(--nys-color-text);
+}
+
+.password-rules__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nys-space-100);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.password-rule {
+  display: flex;
+  gap: var(--nys-space-100);
+  align-items: center;
+  font-size: var(--nys-font-size-body-sm);
+  color: var(--nys-color-text-weak);
+}
+
+.password-rule--ok {
+  color: var(--nys-color-success-strong);
+}
+
+/* Quick actions sidebar panel -------------------------------------------- */
+
+.quick-actions-panel {
+  padding: var(--nys-space-400);
+  border: solid var(--nys-space-1px) var(--nys-color-base-weak);
+  border-radius: var(--nys-radius-md);
+  background: var(--nys-color-surface);
+}
+
+.quick-actions-panel__heading {
+  margin: 0 0 var(--nys-space-200);
+  font-family: var(--nys-font-family-ui);
+  font-size: var(--nys-font-size-ui-sm);
+  font-weight: var(--nys-font-weight-semibold);
+  letter-spacing: var(--nys-font-letterspacing-ui-sm);
+  text-transform: uppercase;
+  color: var(--nys-color-text-weak);
+}
+
+.quick-actions-panel__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nys-space-200);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.quick-actions-panel__link {
+  display: inline-flex;
+  gap: var(--nys-space-100);
+  align-items: center;
+  font-family: var(--nys-font-family-ui);
+  font-size: var(--nys-font-size-ui-md);
+  font-weight: var(--nys-font-weight-medium);
+  color: var(--nys-color-link);
+}
+
+/* Contact panel ---------------------------------------------------------- */
+
+.contact-panel__body {
+  margin: 0 0 var(--nys-space-200);
+}
+
+.contact-panel__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nys-space-100);
+  margin: 0;
+}
+
+.contact-panel__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--nys-space-100);
+}
+
+.contact-panel__label {
+  font-weight: var(--nys-font-weight-semibold);
+  color: var(--nys-color-text);
+}
+
+.contact-panel__label::after {
+  content: ":";
+}
+
+.contact-panel__value {
+  margin: 0;
+  color: var(--nys-color-text);
+}
+
+.contact-panel__note {
+  margin: var(--nys-space-200) 0 0;
+  font-size: var(--nys-font-size-body-sm);
+  color: var(--nys-color-text-weak);
+}

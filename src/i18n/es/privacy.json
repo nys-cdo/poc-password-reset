@@ -1,0 +1,76 @@
+{
+  "effectiveBadge": "Vigente: 1 de enero de 2025",
+  "intro": "Esta Política de privacidad explica cómo ITS del Estado de Nueva York recopila, usa y protege la información que usted proporciona al utilizar GovArc Support. Nos comprometemos a salvaguardar su privacidad y a manejar sus datos de manera responsable.",
+  "sections": [
+    {
+      "id": "collect",
+      "title": "Información que recopilamos",
+      "paragraphs": [
+        "Solo recopilamos la información necesaria para ayudarle a resolver problemas de cuenta y de soporte."
+      ],
+      "list": [
+        "Datos de contacto como su nombre y dirección de correo electrónico",
+        "Identificadores de cuenta utilizados para verificar su identidad",
+        "Solicitudes de soporte y los mensajes que nos envía",
+        "Datos técnicos como el tipo de navegador y las páginas visitadas"
+      ]
+    },
+    {
+      "id": "use",
+      "title": "Cómo usamos su información",
+      "paragraphs": [
+        "Su información se utiliza para brindar y mejorar los servicios de GovArc Support."
+      ],
+      "list": [
+        "Verificar su identidad y procesar la recuperación de la cuenta",
+        "Responder a sus solicitudes de soporte",
+        "Detectar y prevenir el fraude o el abuso",
+        "Mejorar la accesibilidad y la fiabilidad de nuestros servicios"
+      ]
+    },
+    {
+      "id": "security",
+      "title": "Seguridad de los datos",
+      "paragraphs": [
+        "Aplicamos salvaguardas administrativas, técnicas y físicas diseñadas para proteger su información contra el acceso, la divulgación o la pérdida no autorizados."
+      ]
+    },
+    {
+      "id": "sharing",
+      "title": "Intercambio de información",
+      "paragraphs": [
+        "No vendemos su información personal. Compartimos datos únicamente con entidades estatales autorizadas y proveedores de servicios según sea necesario para prestar los servicios, o cuando lo exija la ley."
+      ]
+    },
+    {
+      "id": "retention",
+      "title": "Conservación de los datos",
+      "paragraphs": [
+        "Conservamos su información solo durante el tiempo necesario para cumplir los fines descritos en esta política y para satisfacer los requisitos legales y reglamentarios."
+      ]
+    },
+    {
+      "id": "rights",
+      "title": "Sus derechos",
+      "paragraphs": [
+        "Según sus circunstancias, es posible que tenga derecho a:"
+      ],
+      "list": [
+        "Acceder a la información personal que tenemos sobre usted",
+        "Solicitar correcciones de información inexacta",
+        "Solicitar la eliminación cuando la ley lo permita",
+        "Hacer preguntas sobre cómo se manejan sus datos"
+      ]
+    }
+  ],
+  "securityCallout": {
+    "title": "Medidas de seguridad",
+    "body": "Todos los datos se cifran en tránsito y en reposo, el acceso se limita al personal autorizado y nuestros sistemas se supervisan y evalúan periódicamente en busca de vulnerabilidades."
+  },
+  "contact": {
+    "title": "¿Preguntas sobre esta política?",
+    "body": "Comuníquese con la Oficina de Privacidad de NYS ITS y con gusto le ayudaremos.",
+    "emailLabel": "Correo electrónico",
+    "email": "privacy@its.ny.gov"
+  }
+}
