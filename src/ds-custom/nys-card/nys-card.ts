@@ -69,14 +69,13 @@ export class NysCard extends LitElement {
       overflow: hidden;
       block-size: 100%;
       background: var(--nys-color-surface);
-      border-radius: var(--nys-radius-lg);
+      border: var(--nys-border-width-sm) solid var(--nys-color-neutral-200);
+      border-radius: var(--nys-radius-xl);
       color: var(--nys-color-text);
     }
 
-    :host([variant="bordered"]) .card {
-      border: solid var(--nys-space-1px) var(--nys-color-base);
-    }
-
+    /* Raised cards keep the hairline border and add the NYSDS raised elevation
+       (--nys-shadow-raised === 0 4px 6px -1px @10% + 0 4px 6px -1px @1%). */
     :host([variant="elevated"]) .card {
       box-shadow: var(--nys-shadow-raised);
     }
