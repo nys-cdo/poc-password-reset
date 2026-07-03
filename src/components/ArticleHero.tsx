@@ -19,17 +19,19 @@ interface ArticleHeroProps {
  */
 export function ArticleHero({ title, description, author, views, readTime }: ArticleHeroProps) {
   const { t } = useTranslation(["article", "common"]);
-  const { localePath } = useLocale();
+  // Breadcrumbs render as raw <a href> (slotted into nys-breadcrumbs), so they
+  // bypass the router basename — use localeHref to include the deploy base path.
+  const { localeHref } = useLocale();
 
   return (
     <section className="article-hero">
       <div className="nys-grid-container">
         <NysBreadcrumbs ariaLabel={title}>
           <ol>
-            <BreadcrumbItem label={t("common:nav.home")} link={localePath("")} />
+            <BreadcrumbItem label={t("common:nav.home")} link={localeHref("")} />
             <BreadcrumbItem
               label={t("common:nav.knowledgeBase")}
-              link={localePath("resident/knowledge")}
+              link={localeHref("resident/knowledge")}
             />
             <BreadcrumbItem label={title} isLast />
           </ol>

@@ -17,7 +17,7 @@ const PAGE_SIZE = 6;
 
 export function KnowledgeBase() {
   const { t } = useTranslation(["kb", "common", "articles"]);
-  const { localePath } = useLocale();
+  const { localePath, localeHref } = useLocale();
 
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("all");
@@ -131,7 +131,7 @@ export function KnowledgeBase() {
                     excerpt={excerpt}
                     category={t(`kb:categories.${article.categoryId}` as "kb:categories.cybersecurity")}
                     readLabel={t("kb:readArticle")}
-                    to={localePath(`resident/knowledge/${article.slug}`)}
+                    to={localeHref(`resident/knowledge/${article.slug}`)}
                   />
                 </div>
               ))}

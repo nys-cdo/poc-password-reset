@@ -47,11 +47,16 @@ No dev server is currently running (a prior background one was killed — just `
 
 **Deploy:** push to `main` → `.github/workflows/deploy.yml` runs `npm ci && npm run build`,
 copies `dist/index.html`→`dist/404.html` (SPA deep-link fallback), and publishes to Pages.
-Sub-path deploy is wired via three coordinated places — keep them in sync if the repo name
+Sub-path deploy is wired via four coordinated places — keep them in sync if the repo name
 or hosting changes:
-- `vite.config.ts` — `base: command === "build" ? "/poc-password-reset/" : "/"`.
+- `vite.config.ts` — `base: command === "build" || isPreview ? "/poc-password-reset/" : "/"`
+  (the `isPreview` half is required or `vite preview` serves at `/` and the ES module 404s).
 - `src/App.tsx` — router `basename` derived from `import.meta.env.BASE_URL`.
-- `src/setupIcons.ts` — icon registry paths already keyed off `BASE_URL`.
+- `src/setupIcons.ts` — icon registry paths keyed off `BASE_URL`.
+- `src/i18n/useLocale.ts` — **`localeHref()`** (= `BASE_URL` + locale path) for RAW anchors that
+  bypass the router basename: NYSDS `href`/`homepageLink` props (button, dropdown item, global
+  header, breadcrumbs) and plain `<a>`. `localePath()` stays for React Router `<Link>`/`navigate`.
+  Missing this = every raw-anchor link 404s under the sub-path. See `docs/nysds-notes.md` §10.
 
 ## Routes (locale-prefixed: `/:lang`, lang ∈ en|es; invalid → /en)
 
@@ -96,7 +101,7 @@ or hosting changes:
 ## NYSDS bugs/gaps found (for the DS team)
 
 Full writeups in `docs/`. Summary:
-1. `NysUnavHeader` wrapper: drops `languages` (object prop → attribute → null crash), doesn't forward `ref`, no event props → listen for `nys-language-select` on a wrapping div; rely on default language list. (`docs/nysds-bug-unavheader-languages-react.md`)
+1. `NysUnavHeader` wrapper: drops `languages` (object prop → attribute → null crash), doesn't forward `ref`, no event props → listen for `nys-language-select` on a wrapping div; **set `languages` imperatively** on the `nys-unavheader` element (we restrict it to EN+ES this way — `SiteHeader`'s effect queries the element and assigns `.languages`). (`docs/nysds-bug-unavheader-languages-react.md`)
 2. `nys-icon` resolves SVGs from its script URL → silent 404 under bundlers. (`docs/nysds-notes.md` §2)
 3. `nys-globalheader` active-link (above). (§1)
 4. `nys-breadcrumbs`: `nys-breadcrumbitem` isn't registered/exported; real input is a slotted `<ol>` of `<li>` (inner `<a>` = link, no anchor = current). No `inverted`; recolor via inherited tokens. (§4)
@@ -105,6 +110,7 @@ Full writeups in `docs/`. Summary:
 7. **`nys-skipnav` / `nys-backtotop`**: hardcode English labels, no `label` prop → untranslatable on ES pages. (§7)
 8. **`nys-textarea`**: placeholder contrast ≈4.20:1 (< 4.5:1). Entered text 17.2:1, border 3.09:1 are fine. (§8)
 9. **`nys-unavheader` / `nys-alert`**: axe needs-review items (`aria-allowed-attr` on unavheader buttons; `aria-prohibited-attr` on the alert container's `aria-label` div). (§9)
+10. **`href` anchors bypass the router basename** (nys-button/dropdownmenuitem/globalheader/breadcrumbs render raw `<a>`) → internal links 404 under a sub-path deploy. Fix = `localeHref` helper. (§10)
 
 ## Hardening pass — results (2026-07-02)
 

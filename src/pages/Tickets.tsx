@@ -10,7 +10,7 @@ import { useLocale } from "../i18n/useLocale";
  */
 export function Tickets() {
   const { t } = useTranslation(["tickets", "common"]);
-  const { localePath } = useLocale();
+  const { localeHref } = useLocale();
 
   return (
     <div className="nys-grid-container content-page content-stack">
@@ -29,7 +29,7 @@ export function Tickets() {
           fullWidth
           variant="filled"
           label={t("common:userActions.signIn")}
-          href={localePath("")}
+          href={localeHref("")}
         />
       </section>
     </div>

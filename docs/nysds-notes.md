@@ -161,3 +161,36 @@ NYSDS shadow DOM, not consumer code:
 - **`nys-alert`** — its container `<div class="nys-alert__container" aria-label="info alert">`
   triggers `aria-prohibited-attr` (`aria-label` on a `<div>` with no role). Consider a role
   or moving the label to a heading/`role="img"` pattern.
+
+## 10. NYSDS `href` anchors bypass the router basename (sub-path deploys)
+
+**Severity:** High for any app deployed under a sub-path (e.g. GitHub Pages project
+site `…/poc-password-reset/`); harmless at domain root.
+
+React Router's `basename` only rewrites URLs for its own `<Link>` / `navigate()`. Any
+element that renders a **raw `<a href>`** ignores it and ships the href verbatim — so an
+app-relative path like `/en/faq` is served without the deploy base and 404s. In NYSDS this
+hits every component that takes an `href`/`homepageLink` prop and renders an anchor:
+`nys-button` (when `href` is set), `nys-dropdownmenuitem`, `nys-globalheader`
+(`homepageLink`), and slotted breadcrumb `<li><a>` under `nys-breadcrumbs`. Plain `<a>`
+tags you write yourself have the same issue.
+
+**Symptom:** internal nav via the header "Help" link / Sign-in buttons / breadcrumbs /
+card CTAs jumps to `https://host/en/faq` (no base) → GitHub 404, while React Router
+`<Link>` nav works fine.
+
+**Fix (this repo):** two helpers off `useLocale()` —
+- `localePath(p)` → app-relative `/en/faq`, for React Router `<Link to>` / `navigate()`
+  (the router prepends basename).
+- `localeHref(p)` → base-prefixed `/poc-password-reset/en/faq` = `import.meta.env.BASE_URL`
+  + `localePath(p)` without its leading slash, for **raw anchors** (NYSDS `href`/`homepageLink`,
+  plain `<a>`). `BASE_URL` is `/` in dev so this collapses to `/en/faq` there.
+
+Watch the indirect case: a component that forwards a path prop into a NYSDS `href`
+(`ArticleCard`/`IconActionCard` → `nys-button href`) must receive a `localeHref` value, even
+though a sibling that renders a `<Link>` (`ArticleListRow`) takes `localePath`. Verify by
+scanning that **no** in-page anchor (including shadow DOM) resolves without the base path.
+
+**Note:** `vite preview` resolves config with `command === "serve"`, so a `base` keyed only
+off `command` reverts to `/` in preview and can't serve the build's sub-path assets (ES module
+→ HTML fallback → blank page). Gate the base on `command === "build" || isPreview`.

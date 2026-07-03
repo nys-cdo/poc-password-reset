@@ -15,13 +15,28 @@ export function useLocale() {
 
   const locale: Locale = isSupportedLocale(lang) ? lang : DEFAULT_LOCALE;
 
-  /** Prefix an app-relative path (without locale) with the active locale. */
+  /**
+   * App-relative, locale-prefixed path (e.g. `/en/faq`). Use for React Router
+   * `<Link to>` and `navigate()` — the router prepends the deploy basename.
+   */
   const localePath = useCallback(
     (path: string) => {
       const clean = path.replace(/^\/+/, "");
       return clean ? `/${locale}/${clean}` : `/${locale}`;
     },
     [locale],
+  );
+
+  /**
+   * Full href including the deploy base path (e.g. `/poc-password-reset/en/faq`).
+   * Use for RAW anchors that bypass React Router — plain `<a href>` and NYSDS
+   * `href`/`homepageLink` props (nys-button, nys-dropdownmenuitem, nys-globalheader).
+   * The router's basename does NOT touch these, so the base must be baked in.
+   * `BASE_URL` is "/" in dev and "/poc-password-reset/" in the production build.
+   */
+  const localeHref = useCallback(
+    (path: string) => `${import.meta.env.BASE_URL}${localePath(path).slice(1)}`,
+    [localePath],
   );
 
   /** Switch locale, keeping the same sub-path + query string. */
@@ -33,5 +48,5 @@ export function useLocale() {
     [location.pathname, location.search, navigate],
   );
 
-  return { locale, localePath, switchLocale };
+  return { locale, localePath, localeHref, switchLocale };
 }

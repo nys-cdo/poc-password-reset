@@ -14,6 +14,15 @@ import { useLocale } from "../i18n/useLocale";
 
 const HELP_TRIGGER_ID = "site-header-help";
 
+// Restrict the unav-header Translate menu to the two locales this site actually
+// supports (the component defaults to 14). Must be set imperatively as an element
+// property — the React wrapper drops the `languages` prop (see
+// docs/nysds-bug-unavheader-languages-react.md).
+const SUPPORTED_LANGUAGES = [
+  { code: "en", label: "English" },
+  { code: "es", label: "Español" },
+];
+
 /**
  * Detail shape emitted by `nys-unavheader`'s `nys-language-select` event.
  * The wrapper does not surface this as an `onNys*` prop, so we bind it natively.
@@ -24,7 +33,7 @@ interface LanguageSelectDetail {
 
 export function SiteHeader() {
   const { t } = useTranslation();
-  const { localePath, switchLocale } = useLocale();
+  const { localePath, localeHref, switchLocale } = useLocale();
   const headerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -34,6 +43,10 @@ export function SiteHeader() {
     // component's default language list, which matches the demo's 14 (PRD §8.1).
     const el = headerRef.current;
     if (!el) return;
+
+    // Set the Translate language list imperatively (prop is dropped by the wrapper).
+    const unav = el.querySelector("nys-unavheader") as (HTMLElement & { languages?: unknown }) | null;
+    if (unav) unav.languages = SUPPORTED_LANGUAGES;
 
     const onLanguageSelect = (event: Event) => {
       // Suppress the default Smartling redirect for every option (unsupported
@@ -53,7 +66,7 @@ export function SiteHeader() {
 
       <NysGlobalHeader
         appName={t("appName")}
-        homepageLink={localePath("")}
+        homepageLink={localeHref("")}
       >
         <ul>
           <li>
@@ -67,7 +80,7 @@ export function SiteHeader() {
           <li>
             {/* Submenu trigger; the dropdown enhances it. Real href is the
                 no-JS fallback (Help → FAQ). See PRD §8.2 / open risk #2. */}
-            <a id={HELP_TRIGGER_ID} href={localePath("faq")}>
+            <a id={HELP_TRIGGER_ID} href={localeHref("faq")}>
               {t("nav.help")}
             </a>
           </li>
@@ -78,26 +91,26 @@ export function SiteHeader() {
           <NysButton
             variant="outline"
             label={t("userActions.signIn")}
-            href={localePath("resident/a/tickets")}
+            href={localeHref("resident/a/tickets")}
           />
           <NysButton
             variant="filled"
             label={t("userActions.createAccount")}
-            href={localePath("resident/a/tickets")}
+            href={localeHref("resident/a/tickets")}
           />
         </div>
       </NysGlobalHeader>
 
       {/* Help submenu attaches to its trigger by id (PRD §8.2 / §10.1). */}
       <NysDropdownMenu id="site-header-help-menu" for={HELP_TRIGGER_ID}>
-        <NysDropdownMenuItem label={t("nav.faq")} href={localePath("faq")} />
+        <NysDropdownMenuItem label={t("nav.faq")} href={localeHref("faq")} />
         <NysDropdownMenuItem
           label={t("nav.accessibility")}
-          href={localePath("accessibility")}
+          href={localeHref("accessibility")}
         />
         <NysDropdownMenuItem
           label={t("nav.contactSupport")}
-          href={localePath("faq")}
+          href={localeHref("faq")}
         />
       </NysDropdownMenu>
     </div>

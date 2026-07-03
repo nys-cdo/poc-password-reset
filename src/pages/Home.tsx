@@ -11,7 +11,7 @@ import heroImg from "../assets/hero-williamsburg-bridge.jpg";
 
 export function Home() {
   const { t } = useTranslation(["home", "common", "articles", "kb"]);
-  const { localePath } = useLocale();
+  const { localePath, localeHref } = useLocale();
 
   return (
     <>
@@ -45,7 +45,7 @@ export function Home() {
                 title={t("home:quickActions.items.search.title")}
                 text={t("home:quickActions.items.search.text")}
                 linkLabel={t("home:quickActions.items.search.link")}
-                to={localePath("resident/knowledge")}
+                to={localeHref("resident/knowledge")}
               />
             </div>
             <div className="nys-grid-col-12 nys-tablet:nys-grid-col-4">
@@ -54,7 +54,7 @@ export function Home() {
                 title={t("home:quickActions.items.ticket.title")}
                 text={t("home:quickActions.items.ticket.text")}
                 linkLabel={t("home:quickActions.items.ticket.link")}
-                to={localePath("resident/a/tickets")}
+                to={localeHref("resident/a/tickets")}
               />
             </div>
             <div className="nys-grid-col-12 nys-tablet:nys-grid-col-4">
@@ -64,7 +64,7 @@ export function Home() {
                 title={t("home:quickActions.items.recovery.title")}
                 text={t("home:quickActions.items.recovery.text")}
                 linkLabel={t("home:quickActions.items.recovery.link")}
-                to={localePath("resident/password-reset/forgot?method=security")}
+                to={localeHref("resident/password-reset/forgot?method=security")}
               />
             </div>
           </div>
@@ -94,7 +94,7 @@ export function Home() {
                   excerpt={t(`articles:${article.excerptKey}` as "articles:data-privacy.excerpt")}
                   category={t(`kb:categories.${article.categoryId}` as "kb:categories.cybersecurity")}
                   readLabel={t("home:kbPreview.readArticle")}
-                  to={localePath(`resident/knowledge/${article.slug}`)}
+                  to={localeHref(`resident/knowledge/${article.slug}`)}
                 />
               </div>
             ))}

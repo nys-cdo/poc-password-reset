@@ -33,7 +33,7 @@ const INITIAL: Values = { email: "", answers: {}, newPassword: "", confirmPasswo
  */
 export function PasswordRecovery() {
   const { t } = useTranslation(["passwordReset", "common"]);
-  const { localePath } = useLocale();
+  const { localePath, localeHref } = useLocale();
 
   const [step, setStep] = useState(1);
   const [values, setValues] = useState<Values>(INITIAL);
@@ -100,7 +100,7 @@ export function PasswordRecovery() {
         onClick={() => goToStep(step - 1)}
       />
     ) : (
-      <NysButton variant="outline" label={t("actions.back")} href={localePath("")} />
+      <NysButton variant="outline" label={t("actions.back")} href={localeHref("")} />
     );
 
   return (
@@ -127,7 +127,7 @@ export function PasswordRecovery() {
                 <NysButton
                   variant="filled"
                   label={t("common:nav.home")}
-                  href={localePath("")}
+                  href={localeHref("")}
                 />
               </div>
             </div>
