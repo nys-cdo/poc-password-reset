@@ -3,6 +3,7 @@ import { NysBreadcrumbs, NysIcon } from "@nysds/components/react";
 
 import { BreadcrumbItem } from "./BreadcrumbItem";
 import { useLocale } from "../i18n/useLocale";
+import heroImg from "../assets/hero-williamsburg-bridge.jpg";
 
 interface ArticleHeroProps {
   title: string;
@@ -14,8 +15,10 @@ interface ArticleHeroProps {
 
 /**
  * State-blue article hero with breadcrumb trail, title, description, and a meta
- * row (read time, author, views) (PRD §13.4). Link/text tokens are overridden
- * to their reverse variants in CSS so the breadcrumb reads on the dark band.
+ * row (read time, author, views) (PRD §13.4). A state-blue tint over the
+ * bridge photo (same approach as the home hero) backs the band; link/text
+ * tokens are overridden to their reverse variants in CSS so the breadcrumb
+ * reads on the dark band.
  */
 export function ArticleHero({ title, description, author, views, readTime }: ArticleHeroProps) {
   const { t } = useTranslation(["article", "common"]);
@@ -24,7 +27,7 @@ export function ArticleHero({ title, description, author, views, readTime }: Art
   const { localeHref } = useLocale();
 
   return (
-    <section className="article-hero">
+    <section className="article-hero" style={{ backgroundImage: `url(${heroImg})` }}>
       <div className="nys-grid-container">
         <NysBreadcrumbs ariaLabel={title}>
           <ol>

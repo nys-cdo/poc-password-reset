@@ -28,7 +28,7 @@ export function ArticleBody({ blocks, sourceLabel }: ArticleBodyProps) {
           case "heading":
             return (
               <Fragment key={index}>
-                {index > 0 ? <NysDivider /> : null}
+                {index > 0 ? <NysDivider subtle /> : null}
                 <h2>{block.text}</h2>
               </Fragment>
             );

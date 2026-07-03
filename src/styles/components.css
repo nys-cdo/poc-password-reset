@@ -422,8 +422,13 @@
 /* Article detail --------------------------------------------------------- */
 
 .article-hero {
+  position: relative;
+  isolation: isolate;
   padding-block: var(--nys-space-800);
-  background: var(--nys-color-theme);
+  background-color: var(--nys-color-theme);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   color: var(--nys-color-text-reverse);
 
   /* Recolor DS components (breadcrumb) that read these tokens so they are
@@ -433,6 +438,24 @@
   --nys-color-text: var(--nys-color-text-reverse);
   --nys-color-text-weak: var(--nys-color-text-reverse-weak);
   --nys-color-ink: var(--nys-color-ink-reverse);
+}
+
+/* Flat state-blue tint over the photo, matching the home hero (primary at
+   90% mixed in oklab) rather than a dark gradient. The bridge photo is set as
+   an inline background-image on the section (see ArticleHero.tsx). */
+.article-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-color: color-mix(in oklab, var(--nys-color-theme) 90%, transparent);
+}
+
+/* Zero the breadcrumb bar's own padding so the trail sits flush with the
+   title/description. The DS exposes this via a settable custom property; an
+   outer rule on the host beats the component's :host default. */
+.article-hero nys-breadcrumbs {
+  --_nys-breadcrumbs-padding: 0;
 }
 
 .article-hero__title {
