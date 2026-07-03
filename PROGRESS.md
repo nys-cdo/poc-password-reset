@@ -179,6 +179,18 @@ gates stayed green throughout.
 - Result-row dividers recolored from `--nys-color-base` (heavy) to **`--nys-color-neutral-100`**
   (the `nys-divider` `subtle` color) — kept the existing CSS border, no component added.
 
+**Article detail hero** (2026-07-03, commit `3f22523` — matched the vendor's per-article KB template)
+- Hero now uses the **same tinted-photo approach as the home hero** (was a flat `--nys-color-theme`
+  band): bridge photo as an inline `background-image` on `.article-hero` (import in `ArticleHero.tsx`),
+  `position:relative; isolation:isolate`, and a `.article-hero::before` overlay of
+  `color-mix(in oklab, var(--nys-color-theme) 90%, transparent)`. Kept `background-color: theme` as a
+  base so it degrades to solid blue if the image fails.
+- **Breadcrumbs flush-left with the title:** the shadow-DOM `<nav>` carried its own inline padding
+  (32px) via the settable custom property **`--_nys-breadcrumbs-padding`** (no `::part`, no doc'd var —
+  found by inspecting the shadow stylesheet). Override wins only when set on the host, NOT an ancestor
+  (`:host` sets it explicitly, so ancestor inheritance loses): `.article-hero nys-breadcrumbs { --_nys-breadcrumbs-padding: 0 }`.
+- Section dividers in the article body → **`<NysDivider subtle />`** (lighter line, `subtle` boolean attr).
+
 **`nys-card` primitive**
 - `border-radius` `lg` → **`xl`**; border `--nys-color-base` → **`--nys-color-neutral-200`**
   (lighter); **`--nys-shadow-raised` applied to ALL cards** (moved off the `elevated`-only rule
@@ -199,3 +211,7 @@ over the hero; fixed by zeroing the block-axis margin on `.home-hero__row` (need
 
 - NYSDS installed = latest (1.19.2); it's the source of truth for component/token APIs.
 - Verify NYSDS APIs before use; several React wrappers are under-implemented (see gotchas).
+- **Pages deploy flakes:** `actions/deploy-pages` sometimes fails with "Deployment failed, try again
+  later" even when GitHub status is all-green and the build artifact is fine — a transient backend
+  hiccup, not a code/config issue. Fix = re-run the workflow (`gh run rerun <id>`). Commit `3f22523`
+  took two failed attempts before a third succeeded.
