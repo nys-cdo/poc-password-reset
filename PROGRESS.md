@@ -4,6 +4,12 @@ Status snapshot for resuming in a fresh context. Source of truth for scope is
 **`PRD.md`**; NYSDS integration issues are in **`docs/nysds-notes.md`** and
 **`docs/nysds-bug-unavheader-languages-react.md`**.
 
+> **Published & live (2026-07-03).** Public repo **`nys-cdo/poc-password-reset`**
+> (https://github.com/nys-cdo/poc-password-reset); GitHub Pages demo at
+> **https://nys-cdo.github.io/poc-password-reset/** (auto-deploys on push to `main`).
+> `README.md` is the vendor-facing doc (leads with a "Using NYSDS with React" guide).
+> Working tree is clean and all work is pushed.
+
 ## What this is
 
 React + TS + Vite rebuild of the 8 public GovArc Support pages on the **NYS Design
@@ -28,16 +34,24 @@ https://demo.leanopstechnology.com/en
 
 ```bash
 npm install            # (lit is a required direct dep — see gotchas)
-npm run dev            # Vite dev server (http://localhost:5173+, currently on :5175)
+npm run dev            # Vite dev server (http://localhost:5173); base = "/" in dev
 npm run typecheck      # tsc -b --noEmit
 npm run lint           # eslint
 npm run lint:style     # stylelint (bans raw hex/px/rem; enforces token use)
 npm test               # vitest: nys-card unit + axe-in-jsdom over every route (EN/ES)
-npm run build          # tsc -b && vite build
+npm run build          # tsc -b && vite build; base = "/poc-password-reset/" (prod only)
 ```
 
 **Current gate: all green** — typecheck, ESLint, stylelint, tests 18/18, build.
-A Vite dev server is currently running in the background on **http://localhost:5175**.
+No dev server is currently running (a prior background one was killed — just `npm run dev`).
+
+**Deploy:** push to `main` → `.github/workflows/deploy.yml` runs `npm ci && npm run build`,
+copies `dist/index.html`→`dist/404.html` (SPA deep-link fallback), and publishes to Pages.
+Sub-path deploy is wired via three coordinated places — keep them in sync if the repo name
+or hosting changes:
+- `vite.config.ts` — `base: command === "build" ? "/poc-password-reset/" : "/"`.
+- `src/App.tsx` — router `basename` derived from `import.meta.env.BASE_URL`.
+- `src/setupIcons.ts` — icon registry paths already keyed off `BASE_URL`.
 
 ## Routes (locale-prefixed: `/:lang`, lang ∈ en|es; invalid → /en)
 
@@ -55,7 +69,7 @@ A Vite dev server is currently running in the background on **http://localhost:5
 - `src/layout/` — `AppLayout` (chrome order + locale/`<html lang/dir>` sync + invalid-locale guard), `SiteHeader` (unavheader + globalheader + user-actions + Help dropdown + language-switch listener), `SiteFooter`.
 - `src/i18n/` — `index.ts` (init; initial `lng` derived from URL), `locales.ts`, `useLocale.ts` (localePath/switchLocale), `i18next.d.ts` (typed resources). Namespaces: `common, home, faq, accessibility, privacy, articles, article, kb, passwordReset, tickets` — each `en/` + `es/`.
 - `src/ds-custom/nys-card/` — Lit `nys-card` (decorator-free) + `NysCard` wrapper + test. Only custom Lit primitive.
-- `src/components/` — page-agnostic React (tokens only): PageHeader, Callout, ContactPanel, IconFeatureList, IconActionCard, ArticleCard, TaskSelector, SearchBar, ViewToggle, CategorySidebar, ArticleListRow, ArticleHero, ArticleBody, ArticleFeedback, BreadcrumbItem, QuickActions, PagePlaceholder.
+- `src/components/` — page-agnostic React (tokens only): PageHeader, Callout, ContactPanel, IconFeatureList, IconActionCard, ArticleCard, TaskSelector, SearchBar, ViewToggle, CategorySidebar, ArticleListRow, ArticleHero, ArticleBody, ArticleFeedback, BreadcrumbItem, QuickActions. (`PagePlaceholder` was removed during hardening — the 404 is now a real localized page.)
 - `src/data/` — fixtures: articles (14), categories, faqs (8), tasks (3), securityQuestions, passwordRules, types.
 - `src/pages/` — one per route.
 - `src/styles/tokens.css` — app tokens + the `.nys-grid-container { max-width: 83rem }` override (stylelint-disabled `rem`). `components.css` — all component styling (tokens only; layout via NYSDS `nys-grid-*`/`nys-*` utilities).
@@ -127,6 +141,53 @@ in a sized same-origin iframe — media queries evaluate against the iframe widt
   upstream `label` prop (§7).
 - `postcss-lit` so stylelint also lints the Lit `css` template in `nys-card.ts` (token-pure by hand).
 - Live screen-reader + cross-browser passes (need human/AT + multiple engines).
+
+## Design-polish pass — results (2026-07-03)
+
+Visual refinements after the hardening pass, all verified in-browser and re-deployed. All
+gates stayed green throughout.
+
+**Home page**
+- Hero: reduced the gap under it (`margin-y-1200` → `margin-t-700 margin-b-1200` on the
+  content section); CTA "Or, just search…" now uses `text-reverse` with an explicit
+  hover/focus rule (`color: text-reverse` + underline — the global `a:hover` was overriding
+  the color, and `text-reverse` has no paired hover token).
+- Global header: **removed the `nysLogo` prop** (no NYS mark in the blue band; the unavheader
+  band above still shows it).
+- Task-selector card: extra inline padding via `::part(body)`; "Continue" button now has
+  `suffixIcon="arrow_forward"`.
+- Poke-around cards: CTAs switched to `variant="text"` (blue underlined links, arrow kept).
+- KB preview section: title changed **"Popular articles" → "Knowledge Base"** (EN+ES) and a
+  subtitle added (`kbPreview.description`), grouped under the heading with "View all articles".
+
+**Recovery page** (redesigned to match the reference — see phase-5 row)
+- No stepper; centered title + intro; form centered via **NYSDS grid offset**
+  (`nys-desktop:nys-grid-offset-3 nys-grid-col-6`) with Quick Actions as a right rail
+  (`nys-grid-col-3`). Removed dead `stepper`/`step1.heading`/`step1.description` i18n keys and
+  `.recovery-sidebar` CSS. Intro copy rewritten to describe the whole flow.
+
+**Knowledge Base**
+- Category list restyled to match the reference: inline `(count)` (muted) instead of badges;
+  **left blue accent bar** on the active item (transparent accent reserved on every row → no
+  layout shift) instead of a filled block; **subtle row dividers**.
+- Result-row dividers recolored from `--nys-color-base` (heavy) to **`--nys-color-neutral-100`**
+  (the `nys-divider` `subtle` color) — kept the existing CSS border, no component added.
+
+**`nys-card` primitive**
+- `border-radius` `lg` → **`xl`**; border `--nys-color-base` → **`--nys-color-neutral-200`**
+  (lighter); **`--nys-shadow-raised` applied to ALL cards** (moved off the `elevated`-only rule
+  — that token already equals the two-layer shadow in the spec). `variant="elevated"` now only
+  differs by… nothing extra visually; both variants carry border + shadow (bordered = same,
+  kept for API compatibility).
+
+**Grid-gap migration (important gotcha):** the old class names `nys-grid-gap` / `nys-grid-gap-lg`
+are **stale** (render `column-gap: normal` = 0). NYSDS now uses **numeric** gap classes that work
+via column padding + a negative row margin: `-400` = 32px gutter, `-500` = 40px. All 7 usages were
+migrated (`-lg`→`-500`, bare→`-400`). The negative *top* margin can **collapse up out of a
+background-less section and overlap the element above** — this caused the header to look "cut off"
+over the hero; fixed by zeroing the block-axis margin on `.home-hero__row` (needed a
+2-class-specificity selector to beat `.nys-grid-row.nys-grid-gap-500`). Also zeroed the global
+`h1` top margin on `.page-header__title` (the layout padding already spaces the title).
 
 ## Notes
 
